@@ -11,7 +11,7 @@ public Plugin myinfo =
 {
 	name = "Music Names",
 	author = "koen",
-	description = "0.1",
+	description = "0.2",
 	version = "",
 	url = "https://github.com/notkoen"
 };
@@ -32,7 +32,6 @@ public void OnPluginStart()
 	RegAdminCmd("sm_reload_musicname", Command_ReloadMusicnames, ADMFLAG_ROOT, "Reloads music name config");
 
 	HookEvent("round_start", OnRoundStart, EventHookMode_PostNoCopy);
-	HookEvent("round_end", OnRoundEnd, EventHookMode_PostNoCopy);
 
 	AddAmbientSoundHook(Hook_AmbientSound);
 
@@ -95,16 +94,12 @@ public void OnClientCookiesCached(int client)
 
 public void OnRoundStart(Handle event, const char[] name, bool dontBroadcast)
 {
+	g_sCurrentSong = "";
 	ClearTrie(g_printedAlready);
 	if (g_bConfigLoaded)
 	{
 		CreateTimer(5.0, Timer_OnRoundStartPost);
 	}
-}
-
-public void OnRoundEnd(Handle event, const char[] name, bool dontBroadcast)
-{
-	g_sCurrentSong = "";
 }
 
 public Action Timer_OnRoundStartPost(Handle timer)
