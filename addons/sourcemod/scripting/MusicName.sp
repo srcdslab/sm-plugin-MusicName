@@ -250,14 +250,13 @@ public Action Hook_AmbientSound(char sample[PLATFORM_MAX_PATH], int &entity, flo
 		g_sCurrentSong = sBuffer;
 		for (int client = 1; client <= MaxClients; client++)
 		{
-            if (!IsClientInGame(client) || IsFakeClient(client))
-                continue;
+			if (!IsClientInGame(client) || IsFakeClient(client))
+				continue;
 
 			if (!g_bDisplay[client])
-                continue;
-			
+				continue;
+
 			CPrintToChat(client, "%t %t", "Chat Prefix", "Now Playing", g_sCurrentSong);
-			
 		}
 	}
 	return Plugin_Continue;
