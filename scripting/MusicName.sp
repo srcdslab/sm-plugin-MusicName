@@ -31,7 +31,7 @@ public void OnPluginStart()
 
 	RegConsoleCmd("sm_togglenp", Command_ToggleNP, "Toggle music name display in chat");
 
-	RegAdminCmd("sm_reload_musicname", Command_ReloadMusicnames, ADMFLAG_ROOT, "Reloads music name config");
+	RegAdminCmd("sm_reload_musicname", Command_ReloadMusicnames, ADMFLAG_CONFIG, "Reloads music name config");
 
 	HookEvent("round_start", OnRoundStart, EventHookMode_PostNoCopy);
 
