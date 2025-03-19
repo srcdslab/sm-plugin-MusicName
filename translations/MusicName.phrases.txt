@@ -5,6 +5,7 @@
 		"en"		"{orange}[MusicNames]{white}"
 		"chi"		"{orange}[MusicNames]{white}"
 		"zho"		"{orange}[MusicNames]{white}"
+		"fr"		"{orange}[MusicNames]{white}"
 	}
 
 	"Enabled"
@@ -12,6 +13,7 @@
 		"en"		"enabled"
 		"zho"		"開啓"
 		"chi"		"开启"
+		"fr"		"activé"
 	}
 
 	"Disabled"
@@ -19,6 +21,7 @@
 		"en"		"disabled"
 		"zho"		"停用"
 		"chi"		"停用"
+		"fr"		"désactivé"
 	}
 
 	"Now Playing"
@@ -28,6 +31,7 @@
 		"en"		"Now playing: {green}{1}"
 		"zho"		"現在播放：{green}{1}"
 		"chi"		"现在播放：{green}{1}"
+		"fr"		"En cours de lecture : {green}{1}"
 	}
 
 	"No Config"
@@ -35,6 +39,7 @@
 		"en"		"The current map does not have a config."
 		"zho"		"目前地圖沒有歌名配置。"
 		"chi"		"目前地图没有歌名配置。"
+		"fr"		"La carte actuelle n'a pas de configuration."
 	}
 
 	"No Name"
@@ -42,6 +47,7 @@
 		"en"		"There is either no song playing or the current song has no name."
 		"zho"		"目前沒有音樂或者這首歌沒有名字。"
 		"chi"		"目前没有音乐或者这首歌没有名字。"
+		"fr"		"Il n'y a pas de musique en cours de lecture ou la musique actuelle n'a pas de nom."
 	}
 
 	"Reload Config"
@@ -49,6 +55,7 @@
 		"en"		"Reloaded music names config."
 		"zho"		"以重新載入歌名配置。"
 		"chi"		"以重新载入歌名配置。"
+		"fr"		"Configuration des noms de musique rechargée."
 	}
 
 	"Map Supported"
@@ -56,6 +63,7 @@
 		"en"		"The current map has a music name config. Use \"{green}!np{white}\" to see the name of the current playing song."
 		"zho"		"這張圖有歌名配置。輸入 \"{green}!np{white}\" 來顯示歌名。"
 		"chi"		"这张图有歌名配置。输入 \"{green}!np{white}\" 来显示歌名。"
+		"fr"		"La carte actuelle a une configuration de noms de musique. Utilisez \"{green}!np{white}\" pour voir le nom de la musique actuellement en cours de lecture."
 	}
 
 	"Display Status"
@@ -65,5 +73,6 @@
 		"en"		"You have {1} {white}music name display。"
 		"zho"		"你以 {1} {white}歌名顯示。"
 		"chi"		"你以 {1} {white}歌名显示。"
+		"fr"		"Vous avez {1} {white}l'affichage du nom de la musique."
 	}
 }
