@@ -11,8 +11,8 @@ public Plugin myinfo =
 {
 	name = "Music Names",
 	author = "koen",
-	description = "0.3",
-	version = "",
+	description = "",
+	version = "0.3",
 	url = "https://github.com/notkoen"
 };
 
