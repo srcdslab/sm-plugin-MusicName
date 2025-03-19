@@ -12,7 +12,7 @@ public Plugin myinfo =
 	name = "Music Names",
 	author = "koen",
 	description = "",
-	version = "0.3",
+	version = "0.4",
 	url = "https://github.com/notkoen"
 };
 
@@ -28,6 +28,8 @@ public void OnPluginStart()
 {
 	RegConsoleCmd("sm_np", Command_NowPlaying, "Display the name of the current song");
 	RegConsoleCmd("sm_nowplaying", Command_NowPlaying, "Display the name of the current song");
+
+	RegConsoleCmd("sm_togglenp", Command_ToggleNP, "Toggle music name display in chat");
 
 	RegAdminCmd("sm_reload_musicname", Command_ReloadMusicnames, ADMFLAG_ROOT, "Reloads music name config");
 
@@ -153,6 +155,21 @@ public Action Command_NowPlaying(int client, int args)
 		return Plugin_Handled;
 	}
 	CPrintToChat(client, "%t %t", "Chat Prefix", "Now Playing", g_sCurrentSong);
+	return Plugin_Handled;
+}
+
+public Action Command_ToggleNP(int client, int args)
+{
+	g_bDisplay[client] = !g_bDisplay[client];
+	g_cDisplayStyle.Set(client, g_bDisplay[client] ? "1" : "0");
+	if (g_bDisplay[client])
+	{
+		CPrintToChat(client, "%t %t", "Chat Prefix", "Display Status", "Enabled");
+	}
+	else
+	{
+		CPrintToChat(client, "%t %t", "Chat Prefix", "Display Status", "Disabled");
+	}
 	return Plugin_Handled;
 }
 
