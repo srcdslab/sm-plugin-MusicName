@@ -12,7 +12,7 @@ public Plugin myinfo =
 	name = "Music Names",
 	author = "koen",
 	description = "",
-	version = "0.5",
+	version = "0.6",
 	url = "https://github.com/notkoen"
 };
 
@@ -258,6 +258,18 @@ public Action Hook_AmbientSound(char sample[PLATFORM_MAX_PATH], int &entity, flo
 
 			CPrintToChat(client, "%t %t", "Chat Prefix", "Now Playing", g_sCurrentSong);
 		}
+
+		DataPack hSongData = new DataPack();
+		hSongData.WriteString(sFileName);
+		RequestFrame(ClearPrintedAlready, hSongData);
 	}
 	return Plugin_Continue;
+}
+
+public void ClearPrintedAlready(DataPack hSongData)
+{
+	char sFileName[PLATFORM_MAX_PATH];
+	hSongData.Reset();
+	hSongData.ReadString(sFileName, sizeof(sFileName));
+	g_printedAlready.SetValue(sFileName, false);
 }
