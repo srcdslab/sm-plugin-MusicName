@@ -12,7 +12,7 @@ public Plugin myinfo =
 	name = "Music Names",
 	author = "koen",
 	description = "",
-	version = "0.6",
+	version = "0.7",
 	url = "https://github.com/notkoen"
 };
 
@@ -33,7 +33,7 @@ public void OnPluginStart()
 
 	RegAdminCmd("sm_reload_musicname", Command_ReloadMusicnames, ADMFLAG_CONFIG, "Reloads music name config");
 
-	HookEvent("round_start", OnRoundStart, EventHookMode_PostNoCopy);
+	HookEvent("round_start", OnRoundStart, EventHookMode_Pre);
 
 	AddAmbientSoundHook(Hook_AmbientSound);
 
@@ -221,6 +221,11 @@ public void LoadConfig()
 
 public Action Hook_AmbientSound(char sample[PLATFORM_MAX_PATH], int &entity, float &volume, int &level, int &pitch, float pos[3], int &flags, float &delay)
 {
+	if (!g_bConfigLoaded)
+	{
+		return Plugin_Continue;
+	}
+
 	char sFileName[PLATFORM_MAX_PATH], sBuffer[PLATFORM_MAX_PATH];
 	strcopy(sBuffer, sizeof(sBuffer), sample);
 	ReplaceString(sBuffer, sizeof(sBuffer), "\\", "/");
@@ -271,5 +276,5 @@ public void ClearPrintedAlready(DataPack hSongData)
 	char sFileName[PLATFORM_MAX_PATH];
 	hSongData.Reset();
 	hSongData.ReadString(sFileName, sizeof(sFileName));
-	g_printedAlready.SetValue(sFileName, false);
+	g_printedAlready.Remove(sFileName);
 }
