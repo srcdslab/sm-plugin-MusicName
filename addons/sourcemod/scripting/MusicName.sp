@@ -12,12 +12,12 @@ public Plugin myinfo =
 	name = "Music Names",
 	author = "koen",
 	description = "",
-	version = "0.7",
+	version = "0.8",
 	url = "https://github.com/notkoen"
 };
 
 char g_sCurrentSong[256];
-char g_sCurrentMap[256];
+char g_sCurrentMap[PLATFORM_MAX_PATH];
 bool g_bConfigLoaded = false;
 bool g_bDisplay[MAXPLAYERS+1] = {true, ...};
 Cookie g_cDisplayStyle;
@@ -51,9 +51,9 @@ public void OnPluginStart()
 		OnClientCookiesCached(i);
 	}
 
-	g_songNames = CreateTrie();
-	g_printedAlready = CreateTrie();
-	GetCurrentMap(g_sCurrentMap, 256);
+	g_songNames = new StringMap();
+	g_printedAlready = new StringMap();
+	GetCurrentMap(g_sCurrentMap, PLATFORM_MAX_PATH);
 	LoadConfig();
 }
 
@@ -66,6 +66,8 @@ public void OnPluginEnd()
 		g_cDisplayStyle.Set(client, buffer);
 	}
 
+	delete g_songNames;
+	delete g_printedAlready;
 	RemoveAmbientSoundHook(Hook_AmbientSound);
 }
 
@@ -105,7 +107,7 @@ public void OnClientCookiesCached(int client)
 public void OnRoundStart(Handle event, const char[] name, bool dontBroadcast)
 {
 	g_sCurrentSong = "";
-	ClearTrie(g_printedAlready);
+	g_printedAlready.Clear();
 	if (g_bConfigLoaded)
 	{
 		CreateTimer(5.0, Timer_OnRoundStartPost);
@@ -184,8 +186,8 @@ public void LoadConfig()
 {
 	g_bConfigLoaded = false;
 
-	ClearTrie(g_songNames);
-	ClearTrie(g_printedAlready);
+	g_songNames.Clear();
+	g_printedAlready.Clear();
 
 	char g_sConfig[PLATFORM_MAX_PATH];
 	BuildPath(Path_SM, g_sConfig, sizeof(g_sConfig), "configs/musicname/%s.cfg", g_sCurrentMap);
@@ -222,6 +224,11 @@ public void LoadConfig()
 public Action Hook_AmbientSound(char sample[PLATFORM_MAX_PATH], int &entity, float &volume, int &level, int &pitch, float pos[3], int &flags, float &delay)
 {
 	if (!g_bConfigLoaded)
+	{
+		return Plugin_Continue;
+	}
+
+	if (volume == 0.0)
 	{
 		return Plugin_Continue;
 	}
