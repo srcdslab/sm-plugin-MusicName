@@ -13,7 +13,7 @@ public Plugin myinfo =
 	name = "Music Names",
 	author = "koen",
 	description = "Displays the name of the current song in chat",
-	version = "1.0.0",
+	version = "1.0",
 	url = "https://github.com/notkoen"
 };
 
@@ -47,11 +47,11 @@ public void OnPluginStart()
 	SetCookieMenuItem(CookiesMenu, 0, "Music Names");
 
 	LoadTranslations("MusicName.phrases");
-	
+
 	g_cvCooldownTime = CreateConVar("sm_musicname_cooldown", "5.0", "Cooldown in seconds before the same song can be announced again", _, true, 1.0);
 	g_cvCooldownTime.AddChangeHook(OnCooldownChanged);
 	g_fCooldownTime = g_cvCooldownTime.FloatValue;
-	
+
 	AutoExecConfig(true);
 
 	for (int i = 1; i <= MaxClients; i++)
@@ -256,7 +256,7 @@ void GetFileFromPath(const char[] path, char[] buffer, int maxlen)
 	char normalizedPath[PLATFORM_MAX_PATH];
 	strcopy(normalizedPath, sizeof(normalizedPath), path);
 	ReplaceString(normalizedPath, sizeof(normalizedPath), "\\", "/");
-	
+
 	int lastSlash = FindCharInString(normalizedPath, '/', true);
 	if (lastSlash != -1)
 	{
@@ -307,13 +307,14 @@ public Action Hook_AmbientSound(char sample[PLATFORM_MAX_PATH], int &entity, flo
 			{
 				continue;
 			}
+
 			if (!g_bDisplay[client])
 			{
 				continue;
 			}
-			
+
 			CPrintToChat(client, "%t %t", "Chat Prefix", "Now Playing", g_sCurrentSong);
-		}	
+		}
 	}
 
 	return Plugin_Continue;
