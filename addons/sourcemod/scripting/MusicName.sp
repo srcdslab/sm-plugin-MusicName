@@ -13,7 +13,7 @@ public Plugin myinfo =
 	name = "Music Names",
 	author = "koen",
 	description = "Displays the name of the current song in chat",
-	version = "1.0",
+	version = "1.1",
 	url = "https://github.com/notkoen"
 };
 
@@ -275,6 +275,9 @@ public Action Hook_AmbientSound(char sample[PLATFORM_MAX_PATH], int &entity, flo
 		return Plugin_Continue;
 	}
 
+	// Mappers might use "volume 0" to stop music from playing
+	// This triggers ambient sound hook
+	// So let's check if this is the input first
 	if (volume == 0.0)
 	{
 		return Plugin_Continue;
@@ -287,6 +290,14 @@ public Action Hook_AmbientSound(char sample[PLATFORM_MAX_PATH], int &entity, flo
 	char sBuffer[PLATFORM_MAX_PATH];
 	if (g_songNames.GetString(sFileName, sBuffer, sizeof(sBuffer)))
 	{
+		// Mappers might also use "volume" input to fade music out
+		// This also triggers the sound hook as well
+		// So let's check if detected song is same as current song
+		if (strcmp(sBuffer, g_sCurrentSong, false) == 0)
+		{
+			return Plugin_Continue;
+		}
+
 		float currentTime = GetGameTime();
 		float lastPlayed;
 
