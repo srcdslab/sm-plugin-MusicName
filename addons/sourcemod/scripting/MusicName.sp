@@ -12,7 +12,7 @@ public Plugin myinfo = {
     name = "Music Names",
     author = "koen, .Rushaway",
     description = "Displays the name of the current song in chat",
-    version = "1.1",
+    version = "1.2",
     url = "https://github.com/notkoen"
 };
 
@@ -32,9 +32,14 @@ ConVar g_cvCooldownTime;
 public void OnPluginStart() {
     RegConsoleCmd("sm_np", Command_NowPlaying, "Display the name of the current song");
     RegConsoleCmd("sm_nowplaying", Command_NowPlaying, "Display the name of the current song");
-    RegConsoleCmd("sm_togglenp", Command_ToggleNP, "Toggle music name display in chat");
+    RegConsoleCmd("sm_songname", Command_NowPlaying, "Display the name of the current song");
 
-    RegAdminCmd("sm_reload_musicname", Command_ReloadMusicnames, ADMFLAG_CONFIG, "Reloads music name config");
+    RegConsoleCmd("sm_togglenp", Command_ToggleNP, "Toggle music name display in chat");
+    RegConsoleCmd("sm_togglenowplaying", Command_ToggleNP, "Toggle music name display in chat");
+
+    RegConsoleCmd("sm_mn_dump", Command_DumpMusicnames, "Print all song names to console");
+
+    RegAdminCmd("sm_mn_reload", Command_ReloadMusicnames, ADMFLAG_CONFIG, "Reloads music name config");
 
     HookEvent("round_start", OnRoundStart, EventHookMode_Pre);
 
@@ -124,8 +129,7 @@ public Action Timer_OnRoundStartPost(Handle timer) {
     return Plugin_Stop;
 }
 
-public void CookiesMenu(int client, CookieMenuAction actions, any info, char[] buffer, int maxlen)
-{
+public void CookiesMenu(int client, CookieMenuAction actions, any info, char[] buffer, int maxlen) {
     if (actions == CookieMenuAction_DisplayOption)
         FormatEx(buffer, maxlen, "Display Music Names: %s", g_bDisplay[client] ? "On" : "Off");
 
@@ -169,14 +173,36 @@ public Action Command_ToggleNP(int client, int args) {
     return Plugin_Handled;
 }
 
+public Action Command_DumpMusicnames(int client, int args) {
+    if (!g_bConfigLoaded) {
+        CPrintToChat(client, "%t %t", "Chat Prefix", "No Config");
+        return Plugin_Handled;
+    }
+
+    CPrintToChat(client, "%t %t", "Chat Prefix", "Check Console for Output");
+    PrintToConsole(client, "-------------- Music Names --------------");
+
+    StringMapSnapshot snap = g_songNames.Snapshot();
+    int len = snap.Length;
+    char szBuffer[256];
+    for (int i = 0; i < len; i++) {
+        snap.GetKey(i, szBuffer, sizeof(szBuffer));
+        PrintToConsole(client, "%i. %s", i + 1, szBuffer);
+    }
+
+    delete snap;
+
+    PrintToConsole(client, "-----------------------------------------");
+    return Plugin_Handled;
+}
+
 public Action Command_ReloadMusicnames(int client, int args) {
     LoadConfig();
     CPrintToChat(client, "%t %t", "Chat Prefix", "Reload Config");
     return Plugin_Handled;
 }
 
-public void LoadConfig()
-{
+public void LoadConfig() {
     g_bConfigLoaded = false;
     g_songNames.Clear();
 
@@ -211,8 +237,7 @@ public void LoadConfig()
     return;
 }
 
-void GetFileFromPath(const char[] path, char[] buffer, int maxlen)
-{
+void GetFileFromPath(const char[] path, char[] buffer, int maxlen) {
     char normalizedPath[PLATFORM_MAX_PATH];
     strcopy(normalizedPath, sizeof(normalizedPath), path);
     ReplaceString(normalizedPath, sizeof(normalizedPath), "\\", "/");
@@ -224,8 +249,7 @@ void GetFileFromPath(const char[] path, char[] buffer, int maxlen)
         strcopy(buffer, maxlen, normalizedPath);
 }
 
-public Action Hook_AmbientSound(char sample[PLATFORM_MAX_PATH], int &entity, float &volume, int &level, int &pitch, float pos[3], int &flags, float &delay)
-{
+public Action Hook_AmbientSound(char sample[PLATFORM_MAX_PATH], int &entity, float &volume, int &level, int &pitch, float pos[3], int &flags, float &delay) {
     if (!g_bConfigLoaded)
         return Plugin_Continue;
 
@@ -259,8 +283,7 @@ public Action Hook_AmbientSound(char sample[PLATFORM_MAX_PATH], int &entity, flo
         g_sCurrentSong = sBuffer;
 
         // Announce the song to players
-        for (int client = 1; client <= MaxClients; client++)
-        {
+        for (int client = 1; client <= MaxClients; client++) {
             if (!IsClientInGame(client) || IsFakeClient(client))
                 continue;
 
