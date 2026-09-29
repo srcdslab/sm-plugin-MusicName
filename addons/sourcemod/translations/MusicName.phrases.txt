@@ -89,5 +89,6 @@
         "en"        "Check console for list of song names."
         "zho"       "已在控制臺顯示歌名單。"
         "chi"       "已在控制台显示歌名单。"
+        "fr"        "Consultez la console pour la liste des noms de musiques."
     }
 }
