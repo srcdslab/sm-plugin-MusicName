@@ -10,7 +10,7 @@ public Plugin myinfo =
     name = "Music Names",
     author = "koen, .Rushaway",
     description = "Display the name of music in chat",
-    version = "1.3.3",
+    version = "1.3.4",
 };
 
 char g_sCurrentSong[256];
@@ -141,7 +141,7 @@ public void CookiesMenu(int client, CookieMenuAction actions, any info, char[] b
 //----------------------------------------------------------------------------------------------------
 // Purpose: Round start event hook
 //----------------------------------------------------------------------------------------------------
-public void OnRoundStart(Handle event, const char[] name, bool dontBroadcast)
+public void OnRoundStart(Event event, const char[] name, bool dontBroadcast)
 {
     g_sCurrentSong = "";
     delete g_fLastPlayedTime;
