@@ -6,6 +6,10 @@
         "chi"       "{orange}[MusicNames]{white}"
         "zho"       "{orange}[MusicNames]{white}"
         "fr"        "{orange}[MusicNames]{white}"
+        "ru"        "{orange}[MusicNames]{white}"
+        "es"        "{orange}[MusicNames]{white}"
+        "de"        "{orange}[MusicNames]{white}"
+        "pt"        "{orange}[MusicNames]{white}"
     }
 
     "Enabled"
@@ -14,6 +18,10 @@
         "zho"       "開啓"
         "chi"       "开启"
         "fr"        "activé"
+        "ru"        "включили"
+        "es"        "activado"
+        "de"        "aktiviert"
+        "pt"        "ativou"
     }
 
     "Disabled"
@@ -22,6 +30,10 @@
         "zho"       "停用"
         "chi"       "停用"
         "fr"        "désactivé"
+        "ru"        "отключили"
+        "es"        "desactivado"
+        "de"        "deaktiviert"
+        "pt"        "desativou"
     }
 
     "Now Playing"
@@ -32,6 +44,10 @@
         "zho"       "現在播放：{green}{1}"
         "chi"       "现在播放：{green}{1}"
         "fr"        "En cours de lecture : {green}{1}"
+        "ru"        "Сейчас играет: {green}{1}"
+        "es"        "Reproduciendo ahora: {green}{1}"
+        "de"        "Läuft gerade: {green}{1}"
+        "pt"        "Tocando agora: {green}{1}"
     }
 
     "No Config"
@@ -40,6 +56,10 @@
         "zho"       "目前地圖沒有歌名配置。"
         "chi"       "目前地图没有歌名配置。"
         "fr"        "La carte actuelle n'a pas de configuration."
+        "ru"        "Для текущей карты нет конфигурации."
+        "es"        "El mapa actual no tiene configuración."
+        "de"        "Die aktuelle Map hat keine Konfiguration."
+        "pt"        "O mapa atual não tem configuração."
     }
 
     "No Name"
@@ -48,14 +68,22 @@
         "zho"       "目前沒有音樂或者這首歌沒有名字。"
         "chi"       "目前没有音乐或者这首歌没有名字。"
         "fr"        "Il n'y a pas de musique en cours de lecture ou la musique actuelle n'a pas de nom."
+        "ru"        "Сейчас не играет музыка, или у текущей песни нет названия."
+        "es"        "No se está reproduciendo ninguna canción o la canción actual no tiene nombre."
+        "de"        "Es läuft gerade kein Lied oder das aktuelle Lied hat keinen Namen."
+        "pt"        "Nenhuma música está tocando ou a música atual não tem nome."
     }
 
     "Reload Config"
     {
         "en"        "Reloaded music names config."
-        "zho"       "以重新載入歌名配置。"
-        "chi"       "以重新载入歌名配置。"
+        "zho"       "已重新載入歌名配置。"
+        "chi"       "已重新载入歌名配置。"
         "fr"        "Configuration des noms de musique rechargée."
+        "ru"        "Конфигурация названий музыки перезагружена."
+        "es"        "Configuración de nombres de música recargada."
+        "de"        "Konfiguration der Musiknamen neu geladen."
+        "pt"        "Configuração de nomes de músicas recarregada."
     }
 
     "Reload Failed"
@@ -64,6 +92,10 @@
         "zho"       "重新載入歌名配置{fullred}出了問題{white}。"
         "chi"       "重新载入歌名配置{fullred}出了问题{white}。"
         "fr"        "{fullred}Échec {white}du rechargement de la configuration des noms de musique."
+        "ru"        "{fullred}Не удалось {white}перезагрузить конфигурацию названий музыки."
+        "es"        "{fullred}Error {white}al recargar la configuración de nombres de música."
+        "de"        "{fullred}Fehler {white}beim Neuladen der Musiknamen-Konfiguration."
+        "pt"        "{fullred}Falha {white}ao recarregar a configuração de nomes de músicas."
     }
 
     "Map Supported"
@@ -72,6 +104,10 @@
         "zho"       "這張圖有歌名配置。輸入 \"{green}!np{white}\" 來顯示歌名。"
         "chi"       "这张图有歌名配置。输入 \"{green}!np{white}\" 来显示歌名。"
         "fr"        "La carte actuelle a une configuration de noms de musique. Utilisez \"{green}!np{white}\" pour voir le nom de la musique actuellement en cours de lecture."
+        "ru"        "Для текущей карты есть конфигурация названий музыки. Введите \"{green}!np{white}\", чтобы увидеть название текущей песни."
+        "es"        "El mapa actual tiene configuración de nombres de música. Usa \"{green}!np{white}\" para ver el nombre de la canción que está sonando."
+        "de"        "Die aktuelle Map hat eine Musiknamen-Konfiguration. Nutze \"{green}!np{white}\", um den Namen des aktuellen Lieds zu sehen."
+        "pt"        "O mapa atual tem uma configuração de nomes de músicas. Use \"{green}!np{white}\" para ver o nome da música que está tocando."
     }
 
     "Display Status"
@@ -79,9 +115,13 @@
         "#format"   "{1:t}"
 
         "en"        "You have {1} {white}music name display."
-        "zho"       "你以 {1} {white}歌名顯示。"
-        "chi"       "你以 {1} {white}歌名显示。"
+        "zho"       "你已{1}{white}歌名顯示。"
+        "chi"       "你已{1}{white}歌名显示。"
         "fr"        "Vous avez {1} {white}l'affichage du nom de la musique."
+        "ru"        "Вы {1} {white}показ названия музыки."
+        "es"        "Has {1} {white}la visualización del nombre de la música."
+        "de"        "Du hast die Anzeige des Musiknamens {1}{white}."
+        "pt"        "Você {1} {white}a exibição do nome da música."
     }
 
     "Check Console for Output"
@@ -90,5 +130,9 @@
         "zho"       "已在控制臺顯示歌名單。"
         "chi"       "已在控制台显示歌名单。"
         "fr"        "Consultez la console pour la liste des noms de musiques."
+        "ru"        "Список названий песен выведен в консоль."
+        "es"        "Revisa la consola para ver la lista de nombres de canciones."
+        "de"        "Die Liste der Liednamen findest du in der Konsole."
+        "pt"        "Verifique o console para ver a lista de nomes das músicas."
     }
 }
