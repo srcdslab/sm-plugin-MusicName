@@ -10,7 +10,7 @@ public Plugin myinfo =
     name = "Music Names",
     author = "koen, .Rushaway",
     description = "Display the name of music in chat",
-    version = "1.3.4",
+    version = "1.3.5",
 };
 
 char g_sCurrentSong[256];
