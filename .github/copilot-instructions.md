@@ -16,7 +16,7 @@ This repository contains the **MusicName** SourceMod plugin, which automatically
 
 - **Language**: SourcePawn (SourceMod scripting language)
 - **Target Platform**: SourceMod 1.12+ on Source engine games
-- **Build System**: SourceKnight (modern SourceMod build tool)
+- **Build System**: GitHub Actions with `rumblefrog/setup-sp` and `spcomp` (SourceMod 1.12.x and 1.13.0.7427)
 - **CI/CD**: GitHub Actions with automated building and releases
 - **Dependencies**: MultiColors (chat colors), UtilsHelper (utility functions)
 
@@ -34,7 +34,6 @@ addons/sourcemod/
 │   └── ci.yml                    # GitHub Actions CI/CD pipeline
 └── dependabot.yml               # Dependency management
 
-sourceknight.yaml                 # SourceKnight build configuration
 ```
 
 ### Runtime Configuration Structure
@@ -79,34 +78,19 @@ This repository follows strict SourcePawn coding standards:
 ## Build & Development Process
 
 ### Local Development Setup
-1. Install SourceKnight: Follow instructions at https://github.com/srcdslab/sourceknight
-2. Clone repository with dependencies:
+1. Get `spcomp` from a SourceMod 1.12 or 1.13 package (https://www.sourcemod.net/downloads.php).
+2. Copy the MultiColors includes (https://github.com/srcdslab/sm-plugin-MultiColors) into `addons/sourcemod/scripting/include/`.
+3. Build:
    ```bash
-   git clone <repository-url>
-   cd sm-plugin-MusicName
-   sourceknight build  # Downloads dependencies and compiles
+   cd addons/sourcemod/scripting
+   spcomp -i include -o ../plugins/MusicName.smx MusicName.sp
    ```
 
-### Build Commands
-```bash
-# Build the plugin
-sourceknight build
-
-# Clean build artifacts
-sourceknight clean
-
-# Install dependencies only
-sourceknight install
-```
-
-### Dependencies Management
-Dependencies are defined in `sourceknight.yaml`:
-- **sourcemod**: Core SourceMod framework (version 1.13.0-git7221)
-- **multicolors**: Advanced chat color support
-- **utilshelper**: Common utility functions
+### CI and Releases
+`.github/workflows/ci.yml` builds the plugin with SourceMod 1.12.x and 1.13.0.7427. The release ships one archive per version: `sm-plugin-MusicName-<version>-sm1.12.tar.gz` and `sm-plugin-MusicName-<version>-sm1.13.tar.gz`.
 
 ### Testing Your Changes
-1. Build the plugin: `sourceknight build`
+1. Build the plugin with `spcomp` (see above)
 2. Copy built .smx file to test server: `addons/sourcemod/plugins/`
 3. Copy translation file: `addons/sourcemod/translations/`
 4. Create test config: `addons/sourcemod/configs/musicname/<mapname>.cfg`
@@ -216,9 +200,9 @@ StringToLowerCase(sFileName); // Only convert once
 ## Common Issues & Troubleshooting
 
 ### Build Issues
-- **Missing dependencies**: Run `sourceknight install` first
+- **Missing dependencies**: Copy the MultiColors includes into `addons/sourcemod/scripting/include/`
 - **Compilation errors**: Check for missing includes or syntax errors
-- **Version conflicts**: Ensure SourceMod version matches sourceknight.yaml
+- **Version conflicts**: The CI builds with SourceMod 1.12.x and 1.13.0.7427; check both
 
 ### Runtime Issues
 - **Config not loading**: Check file path `/sourcemod/configs/musicname/<mapname>.cfg`
