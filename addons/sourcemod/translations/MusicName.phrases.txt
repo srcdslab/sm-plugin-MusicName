@@ -10,6 +10,11 @@
         "es"        "{orange}[MusicNames]{white}"
         "de"        "{orange}[MusicNames]{white}"
         "pt"        "{orange}[MusicNames]{white}"
+        "pl"        "{orange}[MusicNames]{white}"
+        "tr"        "{orange}[MusicNames]{white}"
+        "it"        "{orange}[MusicNames]{white}"
+        "ua"        "{orange}[MusicNames]{white}"
+        "cze"       "{orange}[MusicNames]{white}"
     }
 
     "Enabled"
@@ -22,6 +27,11 @@
         "es"        "activado"
         "de"        "aktiviert"
         "pt"        "ativou"
+        "pl"        "włączyłeś"
+        "tr"        "etkinleştirdin"
+        "it"        "attivato"
+        "ua"        "увімкнув"
+        "cze"       "zapnul jsi"
     }
 
     "Disabled"
@@ -34,6 +44,11 @@
         "es"        "desactivado"
         "de"        "deaktiviert"
         "pt"        "desativou"
+        "pl"        "wyłączyłeś"
+        "tr"        "devre dışı bıraktın"
+        "it"        "disattivato"
+        "ua"        "вимкнув"
+        "cze"       "vypnul jsi"
     }
 
     "Now Playing"
@@ -48,6 +63,11 @@
         "es"        "Reproduciendo ahora: {green}{1}"
         "de"        "Läuft gerade: {green}{1}"
         "pt"        "Tocando agora: {green}{1}"
+        "pl"        "Teraz gra: {green}{1}"
+        "tr"        "Şimdi çalıyor: {green}{1}"
+        "it"        "In riproduzione: {green}{1}"
+        "ua"        "Зараз грає: {green}{1}"
+        "cze"       "Právě hraje: {green}{1}"
     }
 
     "No Config"
@@ -60,6 +80,11 @@
         "es"        "El mapa actual no tiene configuración."
         "de"        "Die aktuelle Map hat keine Konfiguration."
         "pt"        "O mapa atual não tem configuração."
+        "pl"        "Aktualna mapa nie ma konfiguracji."
+        "tr"        "Mevcut haritanın bir yapılandırması yok."
+        "it"        "La mappa attuale non ha una configurazione."
+        "ua"        "Поточна мапа не має конфігурації."
+        "cze"       "Aktuální mapa nemá konfiguraci."
     }
 
     "No Name"
@@ -72,6 +97,11 @@
         "es"        "No se está reproduciendo ninguna canción o la canción actual no tiene nombre."
         "de"        "Es läuft gerade kein Lied oder das aktuelle Lied hat keinen Namen."
         "pt"        "Nenhuma música está tocando ou a música atual não tem nome."
+        "pl"        "Brak granego utworu lub aktualny utwór nie ma nazwy."
+        "tr"        "Şu anda çalan bir şarkı yok veya mevcut şarkının adı yok."
+        "it"        "Nessun brano in riproduzione o il brano attuale non ha un nome."
+        "ua"        "Зараз нічого не грає, або поточна пісня не має назви."
+        "cze"       "Právě nehraje žádná píseň nebo aktuální píseň nemá název."
     }
 
     "Reload Config"
@@ -84,6 +114,11 @@
         "es"        "Configuración de nombres de música recargada."
         "de"        "Konfiguration der Musiknamen neu geladen."
         "pt"        "Configuração de nomes de músicas recarregada."
+        "pl"        "Przeładowano konfigurację nazw muzyki."
+        "tr"        "Müzik adları yapılandırması yeniden yüklendi."
+        "it"        "Configurazione dei nomi musicali ricaricata."
+        "ua"        "Конфігурацію назв музики перезавантажено."
+        "cze"       "Konfigurace názvů hudby byla znovu načtena."
     }
 
     "Reload Failed"
@@ -96,6 +131,11 @@
         "es"        "{fullred}Error {white}al recargar la configuración de nombres de música."
         "de"        "{fullred}Fehler {white}beim Neuladen der Musiknamen-Konfiguration."
         "pt"        "{fullred}Falha {white}ao recarregar a configuração de nomes de músicas."
+        "pl"        "{fullred}Nie udało się {white}przeładować konfiguracji nazw muzyki."
+        "tr"        "Müzik adları yapılandırması yeniden {fullred}yüklenemedi{white}."
+        "it"        "{fullred}Impossibile {white}ricaricare la configurazione dei nomi musicali."
+        "ua"        "{fullred}Не вдалося {white}перезавантажити конфігурацію назв музики."
+        "cze"       "{fullred}Nepodařilo se {white}znovu načíst konfiguraci názvů hudby."
     }
 
     "Map Supported"
@@ -108,6 +148,11 @@
         "es"        "El mapa actual tiene configuración de nombres de música. Usa \"{green}!np{white}\" para ver el nombre de la canción que está sonando."
         "de"        "Die aktuelle Map hat eine Musiknamen-Konfiguration. Nutze \"{green}!np{white}\", um den Namen des aktuellen Lieds zu sehen."
         "pt"        "O mapa atual tem uma configuração de nomes de músicas. Use \"{green}!np{white}\" para ver o nome da música que está tocando."
+        "pl"        "Aktualna mapa ma konfigurację nazw muzyki. Użyj \"{green}!np{white}\", aby zobaczyć nazwę aktualnie granego utworu."
+        "tr"        "Mevcut haritanın bir müzik adı yapılandırması var. Çalan şarkının adını görmek için \"{green}!np{white}\" yaz."
+        "it"        "La mappa attuale ha una configurazione dei nomi musicali. Usa \"{green}!np{white}\" per vedere il nome del brano in riproduzione."
+        "ua"        "Поточна мапа має конфігурацію назв музики. Використай \"{green}!np{white}\", щоб побачити назву пісні, що зараз грає."
+        "cze"       "Aktuální mapa má konfiguraci názvů hudby. Použij \"{green}!np{white}\" pro zobrazení názvu aktuálně hrající písně."
     }
 
     "Display Status"
@@ -122,6 +167,11 @@
         "es"        "Has {1} {white}la visualización del nombre de la música."
         "de"        "Du hast die Anzeige des Musiknamens {1}{white}."
         "pt"        "Você {1} {white}a exibição do nome da música."
+        "pl"        "Ty {1} {white}wyświetlanie nazwy muzyki."
+        "tr"        "Müzik adı gösterimini {1}{white}."
+        "it"        "Hai {1} {white}la visualizzazione del nome della musica."
+        "ua"        "Ти {1} {white}показ назви музики."
+        "cze"       "{1} {white}zobrazování názvu hudby."
     }
 
     "Check Console for Output"
@@ -134,5 +184,10 @@
         "es"        "Revisa la consola para ver la lista de nombres de canciones."
         "de"        "Die Liste der Liednamen findest du in der Konsole."
         "pt"        "Verifique o console para ver a lista de nomes das músicas."
+        "pl"        "Sprawdź konsolę, aby zobaczyć listę nazw utworów."
+        "tr"        "Şarkı adları listesi için konsola bak."
+        "it"        "Controlla la console per l'elenco dei nomi dei brani."
+        "ua"        "Перевір консоль, щоб побачити список назв пісень."
+        "cze"       "Seznam názvů písní najdeš v konzoli."
     }
 }
